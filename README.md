@@ -4,9 +4,12 @@
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ npm install
+
+# run json-sever at localhost:5000
+$ npm run json-server
 
 # serve with hot reload at localhost:3000
 $ npm run dev
