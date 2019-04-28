@@ -1,4 +1,5 @@
 export default () => ({
   movies: [],
-  loaded: false
+  loaded: false,
+  favourites: []
 });

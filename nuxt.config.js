@@ -3,7 +3,7 @@ const pkg = require('./package')
 
 module.exports = {
   mode: 'universal',
-
+  devtool: 'source-map',
   /*
    ** Headers of the page
    */
