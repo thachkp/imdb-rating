@@ -40,13 +40,15 @@
 
 <script>
 import Card from "~/components/Card";
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters, mapMutations, mapActions } from "vuex";
 import { findIndex } from "lodash";
 export default {
   name: "HomePage",
   data() {
     return {
-      fav: false
+      fav: false,
+      ratingSort: false,
+      yearSort: false
     };
   },
   computed: {
@@ -56,7 +58,13 @@ export default {
     Card
   },
   methods: {
-    ...mapMutations(["addToFavorites", "removeFromFavorites", "sortingMovies"]),
+    ...mapMutations([
+      "addToFavorites",
+      "removeFromFavorites",
+      "sortingMovies",
+      "setMovies"
+    ]),
+    ...mapActions(["sortingByProp"]),
     addtoFav(id) {
       const exist = this.getFavouritesById(id);
       if (!exist) {
@@ -70,16 +78,21 @@ export default {
     },
     sorting(type) {
       console.log(type);
-
       if (type === "rate") {
-        function compare(a, b) {
-          if (a.imdbRating < b.imdbRating) return -1;
-          if (a.imdbRating > b.imdbRating) return 1;
-          return 0;
-        }
-        this.sortingMovies(compare);
+        this.sorting = !this.ratingSort;
+        this.sortingByProp({
+          movies: this.getMovies,
+          prop: "year",
+          sorting: this.yearSort ? -1 : 0
+        });
       }
       if (type === "year") {
+        this.yearSort = !this.yearSort;
+        this.sortingByProp({
+          movies: this.getMovies,
+          prop: "year",
+          sorting: this.yearSort ? -1 : 0
+        });
       }
     }
   }
