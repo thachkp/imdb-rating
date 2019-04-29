@@ -2,8 +2,14 @@
   <section class="section">
     <div class="container">
       <div class="columns is-multiline">
-        <div class="card column is-one-third" v-for="item in getFavourites">
-          <Card :posterUrl="item.posterurl" :title="item.title" :id="item.id" :year="item.year"></Card>
+        <div class="card column is-one-fifth" v-for="item in getFavourites">
+          <Card
+            :posterUrl="item.posterurl"
+            :title="item.title"
+            :id="item.id"
+            :year="item.year"
+            :rating="item.imdbRating"
+          ></Card>
         </div>
       </div>
     </div>

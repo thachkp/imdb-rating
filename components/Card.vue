@@ -11,7 +11,8 @@
           <div class="media-left"></div>
           <div class="media-content">
             <p class="title is-4">{{ title }}</p>
-            <p class="subtitle is-6">{{year}}</p>
+            <p v-if="rating" class="is-4">Rate: {{rating}}</p>
+            <p class="is-4">Year: {{year}}</p>
           </div>
         </div>
       </div>
@@ -37,6 +38,9 @@ export default {
     id: {
       required: true
     },
+    rating: {
+      default: undefined
+    },
     path: {
       type: String,
       required: false,
@@ -56,7 +60,7 @@ export default {
   float: right;
 }
 .card-content {
-  height: 100px;
+  height: 150px;
 }
 </style>
 
