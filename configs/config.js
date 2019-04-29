@@ -1,8 +1,19 @@
 module.exports = {
   redisConfiguration: {
-    host: 'localhost',
-    port: '6379'
+    name: process.env.REDIS_NAME,
+    sentinels: [{
+      host: process.env.REDIS_SENTINEL_1,
+      port: process.env.REDIS_PORT
+    }, {
+      host: process.env.REDIS_SENTINEL_2,
+      port: process.env.REDIS_PORT
+    }, {
+      host: process.env.REDIS_SENTINEL_3,
+      port: process.env.REDIS_PORT
+    }]
+
   },
-  apiHost: 'localhost',
-  apiPort: 5000
+  apiHost: process.env.API_HOST,
+  apiPort: process.env.API_PORT
+
 }
