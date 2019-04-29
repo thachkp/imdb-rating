@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const config = require('../../configs/local-config');
+const config = require('../../configs/config');
 const requestClient = require('../../utils/redis-client');
 requestClient.configure();
 const DB_URL = config.DB_URL;

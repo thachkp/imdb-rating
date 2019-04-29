@@ -77,12 +77,13 @@ export default {
       }
     },
     sorting(type) {
+      console.log(type);
       if (type === "rate") {
-        this.ratingSort = !this.ratingSort;
+        this.sorting = !this.ratingSort;
         this.sortingByProp({
           movies: this.getMovies,
-          prop: "imdbRating",
-          sorting: this.ratingSort
+          prop: "year",
+          sorting: this.yearSort ? -1 : 0
         });
       }
       if (type === "year") {
@@ -90,7 +91,7 @@ export default {
         this.sortingByProp({
           movies: this.getMovies,
           prop: "year",
-          sorting: this.yearSort
+          sorting: this.yearSort ? -1 : 0
         });
       }
     }
