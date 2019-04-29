@@ -9,10 +9,11 @@ export default {
     }
   },
   sortingByProp(context, payload) {
+    const sorting = payload.sorting ? -1 : 0;
     const sorted = payload.movies
       .slice(0)
       .sort((a, b) => (a[payload.prop] < b[payload.prop] ?
-        payload.sorting : payload.sorting - 1));
+        sorting : sorting - 1));
     context.commit('setMovies', sorted);
   }
 };
