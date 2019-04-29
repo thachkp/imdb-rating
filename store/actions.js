@@ -1,8 +1,9 @@
 const path = '/api/movies';
+const server = process.env.API_SERVER_CLIENT || 'http://localhost:3000';
 
 export default {
   async nuxtServerInit(context) {
-    const result = await this.$axios.$get(path);
+    const result = await this.$axios.$get(`${server}${path}`);
     if (result) {
       context.commit('setMovies', result);
       context.commit('setMoviesLoaded', true);

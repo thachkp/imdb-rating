@@ -1,0 +1,16 @@
+apiVersion: v1
+data:
+  APP_NAME: imdb-demo
+  REDIS_NAME: mymaster
+  RedisHost: 'redis-master.tkpc.svc.cluster.local'
+  REDIS_SENTINEL_1: 'redis-ha-announce-0.tkpc.svc.cluster.local'
+  REDIS_SENTINEL_2: 'redis-ha-announce-1.tkpc.svc.cluster.local'
+  REDIS_SENTINEL_3: 'redis-ha-announce-2.tkpc.svc.cluster.local'
+  REDIS_PORT: '26379'
+  API_HOST: server-service.tkpc.svc.cluster.local
+  API_PORT: '5000'
+  API_SERVER_CLIENT: 'http://localhost:3000'
+kind: ConfigMap
+metadata:
+  name: nuxt-config
+  namespace: tkpc
