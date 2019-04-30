@@ -1,5 +1,6 @@
 <template>
   <section class="section">
+    <h1>hello</h1>
     <b-dropdown class="sort-filter" hoverable aria-role="list">
       <button class="button is-dark" slot="trigger">
         <span>Filter</span>
@@ -102,6 +103,9 @@ export default {
 <style scope>
 .fav {
   float: right;
+}
+.column {
+  min-height: 550px;
 }
 .column.is-10,
 .column.is-10-tablet {

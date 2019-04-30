@@ -2,7 +2,7 @@ const Redis = require('ioredis');
 const _ = require('lodash');
 const flat = require("flat");
 const axios = require('axios');
-const config = require('../configs/config');
+const config = require('../configs/local-config');
 
 const requestClient = {
   configure: function () {
@@ -31,10 +31,14 @@ const requestClient = {
           const response = await sendRequest(request).catch(err => {
             reject(err);
           });
-          if (this.configuration.redisClient.status === 'ready') {
-            cacheSet(configuration, request.cacheKey, response.data, request.cache.ttl);
+          if (this.configuration.redisClient.status === 'ready' &&
+            response) {
+            cacheSet(configuration, request.cacheKey, response.data,
+              request.cache.ttl);
           }
-          resolve(response.data);
+          if (response) {
+            resolve(response.data);
+          }
         }
       });
     }
@@ -51,8 +55,10 @@ async function sendRequest(request) {
     method: request.method,
   };
 
-  const response = await axios(options);
-  return await handleResponse(response);
+  const response = await axios(options).catch(err => {
+    throw err;
+  });
+  return handleResponse(response);
 }
 
 function handleResponse(response) {
@@ -107,7 +113,8 @@ function cacheGet(configuration, key) {
 
 function cacheSet(configuration, key, data, expiresIn) {
   if (configuration.redisClient) {
-    configuration.redisClient.setex(key, expiresIn, "" + JSON.stringify(_.flatten(data)));
+    configuration.redisClient.setex(key, expiresIn, "" + JSON.stringify(_
+      .flatten(data)));
   }
 }
 

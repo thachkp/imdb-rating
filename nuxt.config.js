@@ -5,6 +5,12 @@ module.exports = {
   mode: 'universal',
   devtool: 'source-map',
   /*
+   ** Server
+   */
+  server: {
+    port: 4000
+  },
+  /*
    ** Headers of the page
    */
   head: {
@@ -28,7 +34,16 @@ module.exports = {
       href: '/favicon.ico'
     }]
   },
-
+  ava: {
+    require: [
+      "babel-register"
+    ]
+  },
+  babel: {
+    presets: [
+      "env"
+    ]
+  },
   /*
    ** Customize the progress-bar color
    */
@@ -61,7 +76,6 @@ module.exports = {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },
-
   /*
    ** Build configuration
    */
