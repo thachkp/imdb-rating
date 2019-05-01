@@ -26,4 +26,5 @@ $ npm start
 
 ```
 
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+Demo is hosted in Digital Occean.
+https://demo.tkpc.no/
