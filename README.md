@@ -1,6 +1,6 @@
 # imdb-watchlist
 
-> My superior Nuxt.js project
+> My imdb-watchlist project in Nuxt.js and Vue
 
 ## Build Setup
 
