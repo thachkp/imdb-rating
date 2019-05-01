@@ -8,7 +8,7 @@ module.exports = {
    ** Server
    */
   server: {
-    port: 4000
+    port: 3000
   },
   /*
    ** Headers of the page
@@ -68,13 +68,14 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://buefy.github.io/#/documentation
-    'nuxt-buefy',
+    'nuxt-buefy'
   ],
   /*
    ** Axios module configuration
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    baseURL: 'http://localhost:3000',
   },
   /*
    ** Build configuration

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <nuxt-link no-prefetch :to="path + id">
+    <nuxt-link :to="path + id">
       <div class="card-image">
         <figure class="image is-330x350">
           <img :src="posterUrl">

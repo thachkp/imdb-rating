@@ -2,7 +2,8 @@ const Redis = require('ioredis');
 const _ = require('lodash');
 const flat = require("flat");
 const axios = require('axios');
-const config = require('../configs/local-config');
+const getConfig = require('../utils/get-config');
+const config = getConfig();
 
 const requestClient = {
   configure: function () {
