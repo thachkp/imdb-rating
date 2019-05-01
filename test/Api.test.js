@@ -1,5 +1,5 @@
 const assert = require('assert');
-const expect = require('chai').expect
+const should = require('chai').should;
 const request = require('supertest');
 const app = require('../server/router/api');
 const jsonServer = require('json-server');
@@ -21,7 +21,7 @@ describe('Unit testing the /healthz route', function () {
     return request(app)
       .get('/healthz')
       .then(function (response) {
-        assert.equal(response.status, 200)
+        assert.equal(response.status, 200);
       })
   });
 
@@ -29,15 +29,12 @@ describe('Unit testing the /healthz route', function () {
 
 describe('Unit testing the /movies route', function () {
 
-  it('should return OK status and body length equal 24', function () {
-    return request(app)
-      .get('/movies')
-      .then(function (response) {
-        assert.equal(response.status, 200)
-        assert.equal(response.body.length, 24)
-      })
-  });
+  it('should return OK status and body length equal 24', async function () {
+    const response = await request(app).get('/movies');
+    assert.equal(response.status, 200);
+    assert.equal(response.body.length, 24);
 
+  });
 });
 
 after(function () {

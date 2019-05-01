@@ -8,6 +8,5 @@ ADD . ${APP_ROOT}
 
 RUN npm install
 RUN npm run build
-RUN npm test
 
 ENV HOST 0.0.0.0
