@@ -14,6 +14,9 @@ $ npm run json-server
 # run redis-cache server localhost:6379
 $ npm run redis-server
 
+# run unit test
+$ npm test
+
 # serve with hot reload at localhost:3000
 $ npm run dev
 
@@ -21,8 +24,6 @@ $ npm run dev
 $ npm run build
 $ npm start
 
-# generate static project
-$ npm run generate
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
