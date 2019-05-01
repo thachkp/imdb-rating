@@ -2,6 +2,18 @@ const assert = require('assert');
 const expect = require('chai').expect
 const request = require('supertest');
 const app = require('../server/router/api');
+const jsonServer = require('json-server');
+let restServer = null;
+
+
+before(function () {
+  const jsonApp = jsonServer.create();
+  const router = jsonServer.router('../database.json');
+  jsonApp.use(router);
+  restServer = jsonApp.listen(5000);
+
+});
+
 
 describe('Unit testing the /healthz route', function () {
 
@@ -27,3 +39,7 @@ describe('Unit testing the /movies route', function () {
   });
 
 });
+
+after(function () {
+  restServer.close();
+})
